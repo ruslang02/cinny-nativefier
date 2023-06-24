@@ -1,0 +1,32 @@
+diff --color --strip-trailing-cr -Nuar ../old/resources/app/lib/main.js ./resources/app/lib/main.js
+--- ../old/resources/app/lib/main.js	2023-06-24 22:07:48.107077024 +0600
++++ ./resources/app/lib/main.js	2023-06-24 22:15:23.907601824 +0600
+@@ -5481,6 +5481,19 @@
+         log.debug('ipcMain.notification-click');
+         mainWindow.show();
+     });
++    electron_1.ipcMain.on('close', () => {
++        mainWindow.hide();
++    });
++    electron_1.ipcMain.on('maximize', () => {
++        if (mainWindow.isMaximized()) {
++          mainWindow.unmaximize();
++        } else {
++          mainWindow.maximize();
++        }
++    });
++    electron_1.ipcMain.on('minimize', () => {
++        mainWindow.minimize();
++    });
+     setupSessionInteraction(options, mainWindow);
+     setupSessionPermissionHandler(mainWindow);
+     if (options.clearCache) {
+@@ -10562,7 +10575,7 @@
+     var _a;
+     const options = { ...nativefierOptions };
+     if (options.tray && options.tray !== 'false') {
+-        const iconPath = (0, helpers_1.getAppIcon)();
++        const iconPath = __dirname + '/../' + 'tray.png';
+         if (!iconPath) {
+             throw new Error('Icon path not found found to use with tray option.');
+         }

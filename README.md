@@ -18,17 +18,21 @@ Install `nativefier` if you haven't yet: `npm install -g nativefier`
 
 Create a new Nativefier app somewhere:
 ```bash
-$ nativefier https://dev.cinny.in Cinny -e 25.2.0
+$ nativefier https://dev.cinny.in -e 25.2.0 --tray --single-instance --browserwindow-options '{ "transparent": true, "webPreferences": { "sandbox": false } }' --hide-window-frame
 ```
 By default, Nativefier used Electron v19 instead of latest, so I specified version `25.2.0`, see Electron releases at https://github.com/electron/electron/releases
 
-Apply patches from `cinny-nativefier.patch`:
+Copy `cinny-nativefier-main.patch` to the directory `Cinny-linux-x64/` that was created by Nativefier.
+
+Apply patches from `cinny-nativefier-main.patch`:
 ```bash
-Cinny/ $ patch -i somewhere/cinny-nativefier.patch
+Cinny-linux-x64/ $ patch -p0 < ./cinny-nativefier-main.patch
 ```
 
-Copy and replace icons in the `resources/app/` folder.
+Copy and replace `icon.png`, `icon.svg` and `tray.png` in the `Cinny-linux-x64/resources/app/` folder.
+
+Copy files from `inject/` in the `Cinny-linux-x64/resources/app/inject/` folder.
 
 Copy `Cinny.desktop` to `~/.local/share/applications` and make the following edits:
-- Replace `path-to-dir` with where you deployed Cinny Nativefier app
-- Change StartupWMClass property to the value in the name `field` in `resources/app/package.json`
+- Replace `path-to-dir` with where you deployed Cinny Nativefier app (`Cinny-linux-x64/`)
+- Change StartupWMClass property to the value in the name `field` in `Cinny-linux-x64/resources/app/package.json`
