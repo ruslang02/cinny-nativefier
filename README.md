@@ -1,5 +1,7 @@
 # Cinny in Nativefier
 
+![image](./screenshot.png)
+
 A set of patches to make Cinny in Nativefier more nice.
 
 **Why?** The desktop app Cinny ships is built from releases, whereas I wanted to use the code from `master` branch, and also I wanted to have a native experience without having to use browser to access `https://dev.cinny.in`
