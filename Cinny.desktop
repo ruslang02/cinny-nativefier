@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Cinny
+Exec=/path-to-dir/Cinny --ozone-platform=wayland --enable-features=WaylandWindowDecorations,UseOzonePlatform
+Icon=/path-to-dir/resources/app/icon.svg
+Terminal=false
+Type=Application
+Categories=Internet;
+StartupWMClass=name_field_from_package.json
